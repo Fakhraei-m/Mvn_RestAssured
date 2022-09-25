@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-09-23T13:04:10 EET" name="Default suite" finished-at="2022-09-23T13:04:13 EET" duration-ms="2482">
+    <groups>
+    </groups>
+    <test started-at="2022-09-23T13:04:10 EET" name="Default test" finished-at="2022-09-23T13:04:13 EET" duration-ms="2482">
+      <class name="com.app.qa.tests.GETrqstTest">
+        <test-method is-config="true" signature="PostData()[pri:0, instance:com.app.qa.tests.GETrqstTest@47e2e487]" started-at="2022-09-23T13:04:10 EET" name="PostData" finished-at="2022-09-23T13:04:11 EET" duration-ms="543" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PostData -->
+        <test-method signature="GETRequestTest()[pri:0, instance:com.app.qa.tests.GETrqstTest@47e2e487]" started-at="2022-09-23T13:04:11 EET" name="GETRequestTest" finished-at="2022-09-23T13:04:13 EET" duration-ms="1859" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GETRequestTest -->
+      </class> <!-- com.app.qa.tests.GETrqstTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
