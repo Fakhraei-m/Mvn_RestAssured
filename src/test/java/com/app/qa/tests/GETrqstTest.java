@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
 
+//Built-in BDD Style with RestAssured lib
 public class GETrqstTest {
 	
 	@BeforeMethod

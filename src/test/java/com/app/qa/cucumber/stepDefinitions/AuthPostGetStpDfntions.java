@@ -43,11 +43,14 @@ public class AuthPostGetStpDfntions extends CucumberEnvVars{
 	@Then("I should receive an Access Token in response")
 	public void i_should_recieve_an_access_token_in_response()
 	{
-		System.out.println("*-->Here to get the access token");
+		System.out.println("**-->START: I should receive an Access Token in response");		
+		System.out.println("*-->Response Body: "+ response.getBody().asString());
 		
-		Assert.assertTrue(!TextUtils.isEmpty(String.valueOf(response.getBody().jsonPath().get("access_token"))));
 		accessToken = response.getBody().jsonPath().get("access_token");
+		Assert.assertTrue(!TextUtils.isEmpty(accessToken));
 		System.out.println("*-->body with Access Token: "+ accessToken);
+		
+		System.out.println("**-->END: I should receive an Access Token in response");	
 	}
 	
 	@Given("I send POST request with authentication token as following")

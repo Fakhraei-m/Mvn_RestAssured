@@ -22,7 +22,8 @@ Feature: Send POST and verigy with GET using query parameters
     |	title				|	QA Lead		|
     |	author			|	Mamal			|
     |	id					|						|
-    And I should recieve an ID number
+    And I should receive an ID number
+    And I should receive valid json schema
     
   @tag1
   Scenario: Send GET request with query parameter "title" to verify response is Array[] with all enteries with match title

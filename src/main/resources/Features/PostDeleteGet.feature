@@ -24,7 +24,8 @@ Feature: Send POST, verify with GET, then DELETE and again verify with GET
     |	title				|	QAEngineer|
     |	author			|	MdF3			|
     |	id					|	25				|
-    And I should recieve an ID number
+    And I should receive an ID number
+    And I should receive valid json schema
     
   @tag1
   Scenario: Send GET request with query path "id" to verify response is unique id
@@ -46,6 +47,7 @@ Feature: Send POST, verify with GET, then DELETE and again verify with GET
   Scenario: Send DELETE request with query path "id" to verify response is unique id
   #Send DELETE request : http://localhost:3000/posts/ID
   # for JSON-Server API we can only sent Delete request with path parameter, and the query parameters will be ignored
+  # For DELETE request, the response will be empty!
   	Given I send DELETE request as following
     |	Fields			|	Values			|
     |	path param	|	/posts/25		|
@@ -55,9 +57,9 @@ Feature: Send POST, verify with GET, then DELETE and again verify with GET
     Then I should receive response with unique data as following
     |	Fields			|	Values		|
     |	status code	|	200				|
-    |	title				|	QAEngineer|
-    |	author			|	MdF3			|
-    |	id					|	25				|
+    |	title				|						|
+    |	author			|						|
+    |	id					|						|
 
   @tag1
   Scenario: Send GET request with query path "id" to verify response is unique id

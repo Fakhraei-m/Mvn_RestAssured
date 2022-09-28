@@ -24,7 +24,8 @@ Feature: Send POST, verify with GET, then PUT and verify with GET, then DELETE a
     |	title				|	QAEngineer|
     |	author			|	MdF3			|
     |	id					|	25				|
-    And I should recieve an ID number
+    And I should receive an ID number
+    And I should receive valid json schema
     
   @tag1
   Scenario: Send GET request with query path "id" to verify response is unique id
@@ -55,8 +56,8 @@ Feature: Send POST, verify with GET, then PUT and verify with GET, then DELETE a
     Then I should receive response with unique data as following
     |	Fields			|	Values		|
     |	status code	|	200				|
-    |	title				|	QAEngineer|
-    |	author			|	MdF3			|
+    |	title				|	Artist		|
+    |	author			|	Mamal			|
     |	id					|	25				|
 
   @tag1
@@ -88,9 +89,9 @@ Feature: Send POST, verify with GET, then PUT and verify with GET, then DELETE a
     Then I should receive response with unique data as following
     |	Fields			|	Values		|
     |	status code	|	200				|
-    |	title				|	Artist		|
-    |	author			|	Mamal			|
-    |	id					|	25				|
+    |	title				|						|
+    |	author			|						|
+    |	id					|						|
 
   @tag1
   Scenario: Send GET request with query path "id" to verify response is unique id

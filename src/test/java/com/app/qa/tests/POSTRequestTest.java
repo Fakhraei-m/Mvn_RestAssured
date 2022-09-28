@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+//Built-in BDD Style with RestAssured lib
 public class POSTRequestTest {
 
 	public HashMap<String, String> postReqBodyMap = new HashMap<>();

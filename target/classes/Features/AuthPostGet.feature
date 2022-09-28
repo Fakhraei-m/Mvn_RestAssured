@@ -33,7 +33,8 @@ Feature: Send POST to login and receive authentication token, with this token Se
     |	title				|	QAEngineer|
     |	author			|	MdF3			|
     |	id					|	25				|
-    And I should recieve an ID number
+    And I should receive an ID number
+    And I should receive valid json schema
     
   @tag1
   Scenario: Send GET request with query path "id" to verify response is unique id

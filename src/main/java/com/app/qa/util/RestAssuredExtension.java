@@ -67,7 +67,17 @@ public class RestAssuredExtension
         }
     	return null;
     }
-    
+    public static ResponseOptions<Response> GETRequestWithQueryParams(String pathParams, Object bodyDataPOJO)
+    {
+    	System.out.println("**-->Here in RestAssuredExtension.GETRequestWithQueryParams");
+    	Request.body(bodyDataPOJO);//Request.pathParams(queryParams);
+    	try {
+    		return Request.get(new URI(pathParams));
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+    	return null;
+    }
     public static ResponseOptions<Response> GETRequestWithToken(String pathParams, String token)
     {
     	System.out.println("**-->Here in RestAssuredExtension.GETRequestWithToken");
@@ -98,13 +108,26 @@ public class RestAssuredExtension
         Request.body(postReqBodyJSON.toString());
         return Request.put(pathParams);
     }
-
+    public static ResponseOptions<Response> PUTRequestWithBodyAndQueryParams(String pathParams, Object body, Map<String,String> queryParams)
+    {
+    	System.out.println("**-->Here in RestAssuredExtension.PUTRequestWithBodyAndQueryParams");
+    	Request.body(body);
+    	Request.queryParams(queryParams);
+        return Request.put(pathParams);
+    }
     public static ResponseOptions<Response> PUTRequestWithBody(String pathParams, Map<String,String> body)
     {
     	System.out.println("**-->Here in RestAssuredExtension.PUTRequestWithBodyAndQueryParams");
     	//Request.body(body);
     	JSONObject postReqBodyJSON = new JSONObject(body);
     	Request.body(postReqBodyJSON.toString());
+        return Request.put(pathParams);
+    }
+    
+    public static ResponseOptions<Response> PUTRequestWithBody(String pathParams, Object body)
+    {
+    	System.out.println("**-->Here in RestAssuredExtension.PUTRequestWithBodyAndQueryParams");
+    	Request.body(body);
         return Request.put(pathParams);
     }
     
@@ -117,12 +140,22 @@ public class RestAssuredExtension
     	Request.body(postReqBodyJSON.toString());
         return Request.put(pathParams);
     }
+    public static ResponseOptions<Response> PUTRequestWithBodyWithToken(String pathParams, Object body, String token)
+    {
+    	System.out.println("**-->Here in RestAssuredExtension.PUTRequestWithBodyWithToken");
+    	Request.header(new Header("Authorization", "Bearer " + token));
+    	Request.body(body);
+        return Request.put(pathParams);
+    }
     
     public static ResponseOptions<Response> POSTRequestWithBody(String pathParams, Map<String,String> body)  
     {
     	System.out.println("**-->Here in RestAssuredExtension.POSTRequestWithBody");
     	JSONObject postReqBodyJSON = new JSONObject(body);
+    	//Request.body(postReqBodyJSON.toString());
+    	System.out.println("**-->>>>>>>>1");
     	Request.body(postReqBodyJSON.toString());
+    	System.out.println("**-->>>>>>>>2");
         return Request.post(pathParams);
     }
     
@@ -136,7 +169,13 @@ public class RestAssuredExtension
     	Request.body(postReqBodyJSON.toString());
         return Request.post(pathParams);
     }
-    
+    public static ResponseOptions<Response> POSTRequestWithBodyAndQueryParams(String pathParams, Map<String,String> queryParams, Object body)
+    {
+    	System.out.println("**-->Here in RestAssuredExtension.POSTRequestWithBodyAndQueryParams");
+        Request.body(body);
+    	Request.queryParams(queryParams);
+        return Request.post(pathParams);
+    }
     public static ResponseOptions<Response> POSTRequestWithBodyWithToken(String pathParams, Map<String,String> body, String token)  
     {
     	System.out.println("**-->Here in RestAssuredExtension.POSTRequestWithBody");
@@ -145,7 +184,13 @@ public class RestAssuredExtension
     	Request.body(postReqBodyJSON.toString());
         return Request.post(pathParams);
     }
-    
+    public static ResponseOptions<Response> POSTRequestWithBodyWithToken(String pathParams, Object body, String token)  
+    {
+    	System.out.println("**-->Here in RestAssuredExtension.POSTRequestWithBody");
+    	Request.header(new Header("Authorization", "Bearer " + token));
+    	Request.body(body);
+        return Request.post(pathParams);
+    }
     public static ResponseOptions<Response> DELETERequestWithQueryParams(String pathParams, Map<String,String> queryParams)
     {
     	System.out.println("**-->Here in RestAssuredExtension.DELETERequestWithQueryParams");

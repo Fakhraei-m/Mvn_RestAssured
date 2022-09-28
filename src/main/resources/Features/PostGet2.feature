@@ -23,7 +23,8 @@ Feature: Send POST and verigy with GET using query parameters and path parameter
     |	title				|	QAEngineer|
     |	author			|	MdF3			|
     |	id					|	25				|
-    And I should recieve an ID number
+    And I should receive an ID number
+    And I should receive valid json schema
  
   @tag1
   Scenario: Send GET request with query path "id" to verify response is unique id
