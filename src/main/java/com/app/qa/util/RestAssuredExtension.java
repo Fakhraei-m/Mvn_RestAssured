@@ -158,7 +158,12 @@ public class RestAssuredExtension
     	System.out.println("**-->>>>>>>>2");
         return Request.post(pathParams);
     }
-    
+    public static ResponseOptions<Response> POSTRequestWithBody(String pathParams, Object body)  
+    {
+    	System.out.println("**-->Here in RestAssuredExtension.POSTRequestWithBody");
+    	Request.body(body);
+        return Request.post(pathParams);
+    }
     public static ResponseOptions<Response> POSTRequestWithBodyAndQueryParams(String pathParams, Map<String,String> queryParams, Map<String, String> body)
     {
     	System.out.println("**-->Here in RestAssuredExtension.POSTRequestWithBodyAndQueryParams");

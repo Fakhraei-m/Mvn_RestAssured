@@ -9,6 +9,6 @@ public class CucumberHooks {
 	public void TestSetup()
 	{
 		System.out.println("**--->Here in CucumberHooks @Before");
-		RestAssuredExtension restAssuredExtension = new RestAssuredExtension();
+		//RestAssuredExtension restAssuredExtension = new RestAssuredExtension();
 	}
 }

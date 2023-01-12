@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.restassured.module.jsv.JsonSchemaValidator;
 //import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -93,6 +94,9 @@ public class GetPostStpDfntions extends CucumberEnvVars{
 	{
 		System.out.println("*-->START: I send POST request as following");
 		postReqBodyMap.clear();
+		
+		Posts bodyDataPOJO = new Posts();
+		
 		//1st way of getting the dataTable
 //		List<List<String>> data = dataTable.asLists(String.class);	    
 //	    for (List<String> columns : data)
@@ -104,20 +108,44 @@ public class GetPostStpDfntions extends CucumberEnvVars{
 	    for (Map<String, String> columns : rows)
 	    {
 	    	System.out.println("*-->"+ columns.get("Fields")+" , "+ columns.get("Values"));
-	    	//filling the Map for body
-	    	//id field is not mandatory
-	    	//if(columns.get("Fields").equals("title") | columns.get("Fields").equals("author"))
-	    	if(columns.get("Fields").equals("title") | columns.get("Fields").equals("author") | columns.get("Fields").equals("id"))
-	    		postReqBodyMap.put(columns.get("Fields"), columns.get("Values"));
-	    	else if(columns.get("Fields").equals("path param"))
-	    		pathParam = columns.get("Values");
-	    }	    	
+	    	//Filling the Map for body
+	    	//if(columns.get("Fields").equals("title") | columns.get("Fields").equals("author") | columns.get("Fields").equals("id"))
+	    	//	postReqBodyMap.put(columns.get("Fields"), columns.get("Values"));
+	    	//else if(columns.get("Fields").equals("path param"))
+	    	//	pathParam = columns.get("Values");
 	    
+	    	switch(columns.get("Fields"))
+	    	{
+	    	case("id"):
+	    		//Without SERIALIZING
+	    		queryParamMap.put(columns.get("Fields"), columns.get("Values"));
+	    		//SERIALIZING
+	    		bodyDataPOJO.setId(columns.get("Values"));
+	    		break;
+	    	case ("title"):
+	    		//Without SERIALIZING
+	    		queryParamMap.put(columns.get("Fields"), columns.get("Values"));
+	    		//SERIALIZING
+	    		bodyDataPOJO.setTitle(columns.get("Values"));
+	    		break;
+	    	case("author"):
+	    		//Without SERIALIZING
+	    		queryParamMap.put(columns.get("Fields"), columns.get("Values"));
+	    		//SERIALIZING
+	    		bodyDataPOJO.setAuthor(columns.get("Values"));
+	    		break;
+	    	case("path param"):
+	    		pathParam = columns.get("Values");			    		
+	    	}
+	    }	    		    
 	    //Hard coding the value to body  
 	    //postReqBodyMap.put("title","QAEngineer");
 	    //postReqBodyMap.put("author","MdF");
 	    
-	    response = RestAssuredExtension.POSTRequestWithBody(pathParam, postReqBodyMap);
+	    //Without SERIALIZING	    
+	  	//response = RestAssuredExtension.POSTRequestWithBody(pathParam, queryParamMap);
+	  	//SERIALIZING
+	  	response = RestAssuredExtension.POSTRequestWithBody(pathParam, bodyDataPOJO);
 	    System.out.println("*-->END: I send POST request as following");
 	}
 	
@@ -272,6 +300,6 @@ public class GetPostStpDfntions extends CucumberEnvVars{
 		//response = RestAssuredExtension.GETRequestWithQueryParams(pathParam, queryParamMap);
 		//SERIALIZING
 		response = RestAssuredExtension.GETRequestWithQueryParams(pathParam, bodyDataPOJO);
-		System.out.println("*???????????????????-->END: I send GET request as following");
+		System.out.println("*-->END: I send GET request as following");
 	}
 }
